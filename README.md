@@ -1,177 +1,137 @@
 # EventHub – College Event Management System
 
-EventHub is a MERN (MongoDB, Express, React, Node) based college event management platform. It enables societies to create and manage events and allows students to discover, register, and receive notifications for events.
+A MERN-based event management platform that enables societies to create and manage college events while allowing students to discover and register for events.
 
-Key goals:
-- Simple event creation and management for societies
-- Easy browsing and registration for students
-- Secure authentication and role-based access control
-- Email notifications for important event actions
+## Tech Stack
 
----
+- **Frontend:** React.js, React Router, Vite
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB, Mongoose
+- **Authentication:** JWT
+- **Email:** Nodemailer
 
-## Tech stack
+## Features
 
-- Frontend: React, Vite, React Router
-- Backend: Node.js, Express
-- Database: MongoDB (Mongoose)
-- Auth: JSON Web Tokens (JWT)
-- Email: Nodemailer
+- JWT-based authentication
+- Role-based access control for Students and Societies
+- Societies can create and manage events
+- Students can view available events
+- Students can register for events
+- Email notifications after registration
+- Protected routes and APIs
+- MongoDB database integration
 
----
-
-## Main features
-
-- JWT-based authentication (Student / Society roles)
-- Role-based access control and protected routes
-- Society: create, update, and manage events
-- Student: browse events and register
-- Email notifications upon registration
-- RESTful API with MongoDB persistence
-
----
-
-## Project structure
+## Project Structure
 
 ```text
-/ (project root)
-├── client/        # React frontend (Vite)
-├── server/        # Express backend
+event-hub/
+├── client/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── context/
+│   │   └── pages/
+│   ├── package.json
+│   └── vite.config.js
+│
+├── server/
+│   ├── config/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── package.json
+│   └── index.js
+│
 ├── .gitignore
 └── README.md
 ```
 
-(See [client/](/Users/anuragsingh/Desktop/project1/client) and [server/](/Users/anuragsingh/Desktop/project1/server) for implementation details.)
-
----
-
 ## Prerequisites
 
-- Node.js (>= 16 recommended)
-- npm or yarn
-- MongoDB (local or Atlas)
+- Node.js installed
+- MongoDB running locally or MongoDB Atlas
 
----
+## Installation
 
-## Quick start (development)
+### 1. Clone the Repository
 
-1. Clone the repository and change into it:
+```bash
+git clone https://github.com/gaurisingh030804/event-hub.git
+cd event-hub
+```
 
-   git clone https://github.com/gaurisingh030804/event-hub.git
-   cd event-hub
+### 2. Install Dependencies
 
-2. Install backend dependencies and frontend dependencies:
+```bash
+cd server
+npm install
 
-   cd server && npm install
-   cd ../client && npm install
+cd ../client
+npm install
+```
 
-3. Configure environment variables for the server
+### 3. Configure Environment Variables
 
-   - Copy the example env file inside the server folder:
+Inside the `server` folder:
 
-     cd ../server
-     cp .env.example .env
+```bash
+cp .env.example .env
+```
 
-   - Edit `.env` and set these values (example):
+Update the `.env` file:
 
-     MONGO_URI=mongodb://localhost:27017/college-events
-     PORT=5000
-     JWT_SECRET=your_jwt_secret_here
-     EMAIL_USER=your-email@gmail.com
-     EMAIL_PASS=your-email-app-password
+```env
+MONGO_URI=mongodb://localhost:27017/college-events
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+```
 
-   Notes:
-   - For Gmail, generate an App Password (if using 2FA) or enable "Less secure app access" (not recommended).
-   - When using MongoDB Atlas, use the provided connection string for MONGO_URI.
+> **Note:** Never commit your `.env` file or expose passwords, API keys, or other sensitive credentials.
 
-4. Run the backend and frontend
+### 4. Run the Application
 
-   - Start backend (from server/):
-     npm run dev
+**Start the backend:**
 
-   - Start frontend (from client/):
-     npm run dev
+```bash
+cd server
+npm run dev
+```
 
-   - Default URLs:
-     Frontend: http://localhost:5173
-     Backend API: http://localhost:5000
+**Start the frontend in another terminal:**
 
----
+```bash
+cd client
+npm run dev
+```
 
-## Demo accounts
+**Frontend:** `http://localhost:5173`
 
-- Student
-  - Email: student@jss.com
-  - Password: 123456
+**Backend:** `http://localhost:5000`
 
-- Society
-  - Email: society@jss.com
-  - Password: 123456
+## Demo Accounts
 
-(Use these for manual testing if seeded by the server. If they are not present, create accounts through the signup flow.)
+### Student
 
----
+- **Email:** `student@jss.com`
+- **Password:** `123456`
 
-## API (quick examples)
+### Society
 
-- Get events (public):
+- **Email:** `society@jss.com`
+- **Password:** `123456`
 
-  curl http://localhost:5000/api/events
+## Future Improvements
 
-- Register for an event (authenticated):
-
-  curl -X POST http://localhost:5000/api/events/:id/register \
-    -H "Authorization: Bearer <TOKEN>" \
-    -H "Content-Type: application/json"
-
-Adjust endpoints according to the server routes in [server/](/Users/anuragsingh/Desktop/project1/server).
-
----
-
-## Environment & production notes
-
-- Use a strong JWT_SECRET in production
-- Use MongoDB Atlas or a managed DB for reliability
-- Configure a real transactional email provider (SendGrid, Mailgun) for higher deliverability
-- Consider environment-specific config (staging/production)
-
----
-
-## Future improvements (ideas)
-
-- Admin dashboard for site-wide management
-- Event search, filters, and categories
-- Event image uploads and rich descriptions
-- QR-based check-in and attendance tracking
-- Event analytics and reporting
-- CI/CD and cloud deployment (Heroku, Vercel, Railway, or Docker + Kubernetes)
-
----
-
-## Contributing
-
-Contributions are welcome. Suggested workflow:
-
-1. Fork the repository
-2. Create a feature branch: git checkout -b feat/your-feature
-3. Make changes and add tests if applicable
-4. Open a PR with a clear description of the change
-
-Please keep changes focused and run the app locally to verify functionality.
-
----
-
-## License
-
-Include a license file in the repo (e.g., MIT). If none exists, add one or update this section accordingly.
-
----
+- Admin dashboard
+- Event search and filtering
+- Event categories
+- Event image uploads
+- QR-based event check-in
+- Event analytics
+- MongoDB Atlas integration
+- Cloud deployment
 
 ## Author
 
-Gauri Singh — https://github.com/gaurisingh030804
+**Gauri Singh**
 
----
-
-If any of these instructions need to be tailored for a specific deployment environment (Docker, CI, or cloud provider), mention the target and the README can be extended with deployment steps.
-
+GitHub: [gaurisingh030804](https://github.com/gaurisingh030804)
